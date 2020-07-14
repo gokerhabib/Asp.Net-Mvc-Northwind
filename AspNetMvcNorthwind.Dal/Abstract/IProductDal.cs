@@ -15,7 +15,7 @@ namespace AspNetMvcNorthwind.Dal.Abstract
 
         void Add(Product product);
         void Delete(int productId);
-        void Update(int productId);
+        void Update(Product product);
 
     }
 }
