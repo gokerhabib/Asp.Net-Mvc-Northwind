@@ -44,10 +44,29 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetMvcNorthwind.Bll\AspNetMvcNorthwind.Bll.csproj">
+      <Project>{1837F399-2234-405A-9FB7-323AC4FAE0B0}</Project>
+      <Name>AspNetMvcNorthwind.Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetMvcNorthwind.Dal\AspNetMvcNorthwind.Dal.csproj">
+      <Project>{E873D04F-BF01-42DC-8D07-DA4105F7E0F6}</Project>
+      <Name>AspNetMvcNorthwind.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetMvcNorthwind.Entities\AspNetMvcNorthwind.Entities.csproj">
+      <Project>{F9CFC0AB-A768-49FF-9BC6-B7C658F3520C}</Project>
+      <Name>AspNetMvcNorthwind.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetMvcNorthwind.Interfaces\AspNetMvcNorthwind.Interfaces.csproj">
+      <Project>{C1D0646A-BF93-4B80-8CC8-11D8A18DB180}</Project>
+      <Name>AspNetMvcNorthwind.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
