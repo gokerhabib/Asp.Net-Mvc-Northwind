@@ -1,22 +1,23 @@
 ﻿@model System.Collections.Generic.List<AspNetMvcNorthwind.Entities.Product>
 
 @{
-    Layout = null;
+    Layout = "../Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
 <div>
-      @foreach (var product in Model)
-      {
-          @product.ProductName
-          <br />
-      }
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-sm-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.ProductName</h5>
+                        <p class="card-text">@product.UnitPrice</p>
+                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
 </div>
-</body>
-</html>
