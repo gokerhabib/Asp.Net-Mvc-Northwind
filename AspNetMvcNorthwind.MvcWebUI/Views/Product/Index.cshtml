@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.List<AspNetMvcNorthwind.Entities.Product>
+﻿@model AspNetMvcNorthwind.MvcWebUI.Models.ProductViewModel
 
 @{
     Layout = "../Shared/_Layout.cshtml";
@@ -6,7 +6,7 @@
 
 <div>
     <div class="row">
-        @foreach (var product in Model)
+        @foreach (var product in Model.Products)
         {
             <div class="col-sm-3">
                 <div class="card">
@@ -19,5 +19,10 @@
             </div>
         }
 
+    </div>
+    <div class="row">
+        <div class="col-md-12 pt-3">
+            @Html.Pager(Model.PagingInfo)
+        </div>
     </div>
 </div>

@@ -7,6 +7,7 @@ using AspNetMvcNorthwind.Bll.Concrete;
 using AspNetMvcNorthwind.Dal.Concrete.EntityFramework;
 using AspNetMvcNorthwind.Entities;
 using AspNetMvcNorthwind.Interfaces;
+using AspNetMvcNorthwind.MvcWebUI.Models;
 
 namespace AspNetMvcNorthwind.MvcWebUI.Controllers
 {
@@ -21,10 +22,22 @@ namespace AspNetMvcNorthwind.MvcWebUI.Controllers
             _productService = productService;
         }
 
-        public ViewResult Index()
+        public int pageSize = 5;
+        public ViewResult Index(int page = 1)
         {
             List<Product> products = _productService.GetAll();
-            return View(products);
+
+
+            return View(new ProductViewModel
+                            {
+                                Products = products.Skip((page - 1) * pageSize).Take(pageSize).ToList(),
+                                PagingInfo = new PagingInfo
+                                {
+                                    ItemsPerPage = pageSize,
+                                    TotalItems = products.Count(),
+                                    CurrentPage = page
+                                }
+            });
         }
 
         
