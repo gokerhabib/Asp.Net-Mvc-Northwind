@@ -5,17 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using AspNetMvcNorthwind.Entities;
 
-namespace AspNetMvcNorthwind.Dal.Abstract
+namespace AspNetMvcNorthwind.Interfaces
 {
-    public interface IProductDal
+    public interface IProductService
     {
         List<Product> GetAll();
-
         Product Get(int productId);
-
         void Add(Product product);
         void Delete(int productId);
         void Update(Product product);
-
     }
 }

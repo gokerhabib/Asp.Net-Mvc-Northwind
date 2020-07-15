@@ -11,7 +11,7 @@ namespace AspNetMvcNorthwind.Dal.Concrete.EntityFramework
     public class EfProductDal:IProductDal
     {
         private  NorthwindContext _context = new NorthwindContext();
-        public List<Product> GetALL()
+        public List<Product> GetAll()
         {
             return _context.Products.ToList();
         }
