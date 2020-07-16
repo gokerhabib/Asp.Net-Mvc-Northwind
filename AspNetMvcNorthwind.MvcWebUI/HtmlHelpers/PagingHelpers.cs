@@ -10,26 +10,22 @@ namespace AspNetMvcNorthwind.MvcWebUI.HtmlHelpers
 {
     public static class PagingHelpers
     {
-        public static MvcHtmlString Pager(this HtmlHelper html, PagingInfo pagingInfo)
+        public static MvcHtmlString Pager(this HtmlHelper html, PagingInfo pagingInfo, Func<int, string> pageUrl)
         {
-            
             StringBuilder PagingStr = new StringBuilder();
             PagingStr.Append("<ul class='pagination d-flex flex-wrap justify-content-center'>");
-            var totalPage = (int)Math.Ceiling((decimal)pagingInfo.TotalItems / pagingInfo.ItemsPerPage);
-            for (int i = 1; i <= totalPage; i++)
+            for (int i = 1; i <= pagingInfo.TotalPages; i++)
             {
                 var tagBuilder2 = new TagBuilder("li");
                 var tagBuilder = new TagBuilder("a");
-
                 tagBuilder2.AddCssClass("page-item ");
-                tagBuilder.MergeAttribute("href", String.Format("/Product/Index/?page={0}",i));
+                tagBuilder.MergeAttribute("href", pageUrl(i));
                 tagBuilder.AddCssClass("page-link");
                 tagBuilder.InnerHtml = i.ToString();
                 if (pagingInfo.CurrentPage == i)
                 {
                     tagBuilder2.AddCssClass("active");
                 }
-
                 tagBuilder2.InnerHtml = tagBuilder.ToString();
                 PagingStr.Append(tagBuilder2);
             }

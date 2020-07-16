@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 pt-3">
-            @Html.Pager(Model.PagingInfo)
+            @Html.Pager(Model.PagingInfo, a => Url.Action("Index", new { page = a, category = Model.CurrentCategory }))
         </div>
     </div>
 </div>

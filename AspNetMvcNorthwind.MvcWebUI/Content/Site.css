@@ -36,6 +36,10 @@
     font-weight: 500;
     color: #333;
 }
+.nav-link:hover {
+    color: #007bff;
+    font-weight: 600;
+}
 
 .sidebar .nav-link .feather {
     margin-right: 4px;

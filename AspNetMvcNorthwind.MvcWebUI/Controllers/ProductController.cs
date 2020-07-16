@@ -23,9 +23,9 @@ namespace AspNetMvcNorthwind.MvcWebUI.Controllers
         }
 
         public int pageSize = 5;
-        public ViewResult Index(int page = 1)
+        public ViewResult Index(int category=0,int page = 1)
         {
-            List<Product> products = _productService.GetAll();
+            List<Product> products = _productService.GetAll().Where(a=>category == 0 ||a.CategoryID==category).ToList();
 
 
             return View(new ProductViewModel
@@ -36,7 +36,8 @@ namespace AspNetMvcNorthwind.MvcWebUI.Controllers
                                     ItemsPerPage = pageSize,
                                     TotalItems = products.Count(),
                                     CurrentPage = page
-                                }
+                                },
+                                CurrentCategory = category
             });
         }
 

@@ -24,6 +24,7 @@ namespace AspNetMvcNorthwind.MvcWebUI.Infrastructure
         private void AddBllBindings()
         {
             _ninjectKernel.Bind<IProductService>().To<ProductManager>().WithConstructorArgument("productDal",new EfProductDal());
+            _ninjectKernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryDal", new EfCategoryDal());
         }
 
 

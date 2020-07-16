@@ -1,0 +1,13 @@
+﻿@model List<AspNetMvcNorthwind.Entities.Category>
+@Html.RouteLink("Home", 
+    new { controller = "Product", action = "Index"}, 
+    new {@class = "nav-link"+(ViewBag.CurrentCategory ==0 ?" active":null)})
+@foreach (var category in Model)
+{
+    <li class="nav-item">
+        @Html.RouteLink(category.CategoryName,
+            new {category = category.CategoryID, controller = "Product", action = "index"},
+            new {@class = "nav-link"+ (ViewBag.CurrentCategory == category.CategoryID? " active" : null) })
+    </li>
+    
+}
