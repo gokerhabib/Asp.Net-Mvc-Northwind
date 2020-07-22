@@ -13,7 +13,11 @@
                     <div class="card-body">
                         <h5 class="card-title">@product.ProductName</h5>
                         <p class="card-text">@product.UnitPrice</p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                        @using (Html.BeginForm("AddToCart", "Cart"))
+                        {
+                            @Html.Hidden("productId", product.ProductID)
+                            <input class="btn btn-primary" type="submit" value="Add to cart"/>
+                        }
                     </div>
                 </div>
             </div>
