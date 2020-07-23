@@ -13,36 +13,24 @@ namespace AspNetMvcNorthwind.MvcWebUI.Controllers
             _productService = productService;
         }
 
-        public ViewResult Index()
+        public ViewResult Index(Cart cart)
         {
-            var cart = (Cart) Session["cart"];
             return View(cart);
         }
-        public RedirectToRouteResult AddToCart(int productId)
+        public RedirectToRouteResult AddToCart(Cart cart,int productId)
         {
             Product product = _productService.Get(productId);
-            var cart = (Cart)Session["cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
+
             cart.AddToCart(product,1);
             return RedirectToAction("Index",cart);
 
         }
-        public RedirectToRouteResult RemoveFromCart(int productId)
+        public RedirectToRouteResult RemoveFromCart(Cart cart,int productId)
         {
             Product product = _productService.Get(productId);
-            var cart = (Cart) Session["cart"];
-            if (cart.Lines.Count == 0)
-            {
-                ModelState.AddModelError("", "Sepette zaten ürün yok");
-            }
-            else
-            {
-                cart.RemoveFromCart(product);
-            }
+
+            cart.RemoveFromCart(product);
+
             return RedirectToAction("Index", cart);
         }
 
@@ -63,6 +51,11 @@ namespace AspNetMvcNorthwind.MvcWebUI.Controllers
             {
                 return View(shippingDetails);
             }
+        }
+
+        public PartialViewResult SummaryCart(Cart cart)
+        {
+            return PartialView(cart);
         }
     }
 }

@@ -9,10 +9,16 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
-
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Asp.Net Mvc | Northwind</a>
-</nav>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <div class="col-md-6">
+            <a class="navbar-brand col-md-6 mr-0" href="#">Asp.Net Mvc | Northwind</a>
+        </div>
+        <div class="col-md-6">
+            <div class="float-right">
+              @{Html.RenderAction("SummaryCart","Cart");}
+            </div>
+        </div>
+    </nav>
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">

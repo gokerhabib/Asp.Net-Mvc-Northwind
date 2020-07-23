@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AspNetMvcNorthwind.Entities;
 using AspNetMvcNorthwind.MvcWebUI.Infrastructure;
+using AspNetMvcNorthwind.MvcWebUI.ModelBinders;
 
 namespace AspNetMvcNorthwind.MvcWebUI
 {
@@ -19,6 +21,8 @@ namespace AspNetMvcNorthwind.MvcWebUI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //Sabit Kodlar Her Projede kullanılabilir.
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            
+            System.Web.Mvc.ModelBinders.Binders.Add(typeof(Cart),new CartModelBinder());//ModelBinder Mvc ModelBindings
         }
     }
 }
