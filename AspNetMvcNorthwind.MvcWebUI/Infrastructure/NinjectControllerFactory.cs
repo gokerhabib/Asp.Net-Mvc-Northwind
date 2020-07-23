@@ -18,7 +18,8 @@ namespace AspNetMvcNorthwind.MvcWebUI.Infrastructure
         public NinjectControllerFactory()
         {
                 _ninjectKernel = new StandardKernel();
-                AddBllBindings();
+            //AddBllBindings();
+            AddServiceBindings();
         }
 
         private void AddBllBindings()
@@ -26,6 +27,13 @@ namespace AspNetMvcNorthwind.MvcWebUI.Infrastructure
             _ninjectKernel.Bind<IProductService>().To<ProductManager>().WithConstructorArgument("productDal",new EfProductDal());
             _ninjectKernel.Bind<ICategoryService>().To<CategoryManager>().WithConstructorArgument("categoryDal", new EfCategoryDal());
             _ninjectKernel.Bind<IAuthenticationService>().To<AuthanticationManager>().WithConstructorArgument("authenticationDal", new EfAuthenticationDal());
+        }
+
+        private void AddServiceBindings()
+        {
+            _ninjectKernel.Bind<IProductService>().ToConstant(WcfProxy<IProductService>.CreateChannel());
+            _ninjectKernel.Bind<ICategoryService>().ToConstant(WcfProxy<ICategoryService>.CreateChannel());
+            _ninjectKernel.Bind<IAuthenticationService>().ToConstant(WcfProxy<IAuthenticationService>.CreateChannel());
         }
 
 

@@ -11,7 +11,9 @@ namespace AspNetMvcNorthwind.Interfaces
     [ServiceContract]
     public interface ICategoryService
     {
+        [OperationContract]
         List<Category> GetAll();
+        [OperationContract]
         Category Get(int categoryId);
     }
 }
