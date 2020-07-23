@@ -1,0 +1,35 @@
+﻿@model AspNetMvcNorthwind.Entities.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <div class="col-md-3 mt-5 form-signin">
+        @using (Html.BeginForm())
+    {
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        @Html.ValidationSummary(null, new { @class = "h6 font-weight-normal" })
+
+        @Html.TextBox("UserName", null, new { @class = "form-control",placeholder="User Name"})
+        @Html.TextBox("Password", null, new { @class = "form-control",placeholder="Password",type="password" })
+       
+        <div class="pt-3 form-group row">
+            <div class="col-sm-10">
+                <input type="submit" class="btn btn-primary" value="Login" />
+            </div>
+        </div>
+}
+    </div>
+</div>
+</body>
+</html>

@@ -10,6 +10,7 @@ namespace AspNetMvcNorthwind.Entities
 {
     public class Product
     {
+        [Key]
         [HiddenInput(DisplayValue = false)]
         public int ProductID { get; set; }
         [Required]
