@@ -1,0 +1,19 @@
+﻿@model AspNetMvcNorthwind.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "title";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<h2>Checkout Now</h2>
+<div class="col-md-9">
+    @using (Html.BeginForm())
+    {
+        @Html.EditorFor(model => model, new {htmlAttributes = new {@class = "form-control "},})
+        <div class="pt-3 form-group row">
+            <div class="col-sm-10">
+                <input type="submit" class="btn btn-primary" value="Complete Checkout"/>
+            </div>
+        </div>
+    }
+</div>

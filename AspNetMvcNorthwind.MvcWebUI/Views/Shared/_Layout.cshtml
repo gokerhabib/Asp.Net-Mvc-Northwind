@@ -17,7 +17,7 @@
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
-                <div class="pl-3 h3">Kategoriler</div>
+                <div class="pl-3 h3">Categories</div>
 
                 <ul class="nav flex-column">
                     @{ Html.RenderAction("List", "Category");}
@@ -26,7 +26,6 @@
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                <h1 class="h2">Ürünler</h1>
                 @RenderBody()
             </div>
         </main>

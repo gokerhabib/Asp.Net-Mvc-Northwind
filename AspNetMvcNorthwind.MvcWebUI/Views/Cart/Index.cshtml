@@ -5,33 +5,44 @@
 }
 
 <h2>Product in the cart</h2>
-
-<table>
-    <tr>
-        <td>Product Name</td>
-        <td>Unit Price</td>
-        <td>Quantity</td>
-        <td>Tutar</td>
-        <td></td>
-    </tr>
-    @foreach (var line in Model.Lines)
-    {
-    <tr>
-        <td>@line.Product.ProductName</td>
-        <td>@line.Product.UnitPrice.ToString("c")</td>
-        <td>@line.Quantity</td>
-        <td>@((line.Quantity*line.Product.UnitPrice).ToString("c"))</td>
-        <td>
-            @using (Html.BeginForm("RemoveFromCart", "Cart"))
-            {
-                @Html.Hidden("productId", line.Product.ProductID);
-                <input class="btn btn-danger btn-sm" type="submit" value="Remove From Cart"/>
-            }
-        </td>
-    </tr>
-    }
-    <tr>
-        <td>Toplam = @Model.Total</td>
-        <td></td>
-    </tr>
-</table>
+<div class="pl-0 col-md-9">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Line Total</th>
+            <th>X</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var line in Model.Lines.Select((value, i) => new {i, value}))
+        {
+            <tr>
+                <th scope="row">@((line.i) + 1)</th>
+                <td>@line.value.Product.ProductName</td>
+                <td>@line.value.Product.UnitPrice.ToString("c")</td>
+                <td>@line.value.Quantity</td>
+                <td>@((line.value.Quantity * line.value.Product.UnitPrice).ToString("c"))</td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("productId", line.value.Product.ProductID)
+                        ;
+                        <input class="btn btn-dark btn-sm" type="submit" value="Remove From Cart"/>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tr class="table-light">
+            <th colspan="4" class="text-right">TOTAL</th>
+            <th>@Model.Total.ToString("c")</th>
+        </tr>
+    </table>
+    <div>
+        @Html.ActionLink("Checkout Now","Checkout",null,new {@class="btn btn-success"})
+    </div>
+</div>

@@ -45,5 +45,24 @@ namespace AspNetMvcNorthwind.MvcWebUI.Controllers
             }
             return RedirectToAction("Index", cart);
         }
+
+        public ActionResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+        [HttpPost]
+        public ActionResult Checkout(ShippingDetails shippingDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                //Managerdan veri tabanına kayıt sağlanacak
+
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
+        }
     }
 }

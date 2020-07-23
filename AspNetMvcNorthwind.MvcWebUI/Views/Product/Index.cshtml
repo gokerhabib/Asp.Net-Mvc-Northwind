@@ -5,6 +5,7 @@
 }
 
 <div>
+    <h1 class="h2">Ürünler</h1>
     <div class="row">
         @foreach (var product in Model.Products)
         {
@@ -26,7 +27,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 pt-3">
-            @Html.Pager(Model.PagingInfo, a => Url.Action("Index", new { page = a, category = Model.CurrentCategory }))
+            @Html.Pager(Model.PagingInfo, a => Url.Action("Index", new {page = a, category = Model.CurrentCategory}))
         </div>
     </div>
 </div>
